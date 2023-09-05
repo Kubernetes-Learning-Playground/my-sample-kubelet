@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+   name: nginx-kubelet
+   labels:
+     version: v11
+spec:
+   nodeName: myk8s
+   containers:
+      - name: nginx
+        image: nginx:1.18-alpine
+        command: ["/bin/sh"]
+        args: ["-c", "echo test-test; sleep 5; exit 0"]
+        ports:
+           - containerPort: 80
+      - name: http
+        image: nginx:1.18-alpine
+        command: [ "/bin/sh" ]
+        args: [ "-c", "echo test-bbbb; sleep 5; exit 0" ]
+#      - name: delay
+#        image: alpine:3.12
+#        command: [ "/bin/sh" ]
+#        args: [ "-c", "echo test-aaa; sleep 5; exit 0" ]
